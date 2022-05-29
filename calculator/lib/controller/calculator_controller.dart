@@ -37,12 +37,9 @@ class CalculatorController extends GetxController {
           x = y;
           y = 1;
         }
-        print('/ = ${x}, ${y}');
-        print(x / y);
         result.value = '${x / y}';
         break;
       case '=':
-        //ouput.value = result.value;
         operand(operation.value);
         break;
     }
