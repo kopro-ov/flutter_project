@@ -17,7 +17,7 @@ class CalculatorPage extends StatelessWidget {
             padding: EdgeInsets.all(20.0),
             child: Obx(
               () => Text(
-                '${controller.ouput}',
+                '${controller.output}',
                 textAlign: TextAlign.right,
                 style: TextStyle(fontSize: 25),
               ),

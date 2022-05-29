@@ -1,36 +1,42 @@
 import 'package:get/state_manager.dart';
 
 class CalculatorController extends GetxController {
-  var ouput = '0'.obs;
+  var output = '0'.obs;
   var result = '0'.obs;
   var operation = ''.obs;
 
   reset() {
-    ouput.value = '0';
+    output.value = '0';
     result.value = '0';
     operation.value = '';
   }
 
   operand(String o) {
     double x = double.parse(result.value);
-    double y = double.parse(ouput.value);
+    double y = double.parse(output.value);
 
     switch (o) {
       case 'AC':
         reset();
         break;
       case '+/-':
-        ouput.value = '${-y}'.toString();
+        output.value = '${-y}'.toString();
+        break;
+      case '%':
+        output.value = '${y * 0.01}'.toString();
         break;
       case '-':
         result.value = '${x - y}';
+        output.value = result.value;
         break;
       case '+':
         result.value = '${x + y}';
+        output.value = result.value;
         break;
       case '*':
         if (x == 0) x = 1;
         result.value = '${x * y}';
+        output.value = result.value;
         break;
       case '÷':
         if (x == 0) {
@@ -38,27 +44,31 @@ class CalculatorController extends GetxController {
           y = 1;
         }
         result.value = '${x / y}';
+        output.value = result.value;
         break;
       case '=':
-        operand(operation.value);
+        if (operation.value != '=') {
+          operand(operation.value);
+        } else {
+          output.value = result.value;
+        }
         break;
     }
     operation.value = o;
-    ouput.value = result.value;
   }
 
   addNumber(String number) {
-    if (ouput.value == result.value) {
-      ouput.value = '0';
+    if (output.value == result.value) {
+      output.value = '0';
     }
-    if (ouput.value == '0') {
-      return ouput.value = number;
-    }
-
-    if (ouput.value == '-0') {
-      return ouput.value = '-$number';
+    if (output.value == '0') {
+      return output.value = number;
     }
 
-    return ouput.value = ouput.value + number;
+    if (output.value == '-0') {
+      return output.value = '-$number';
+    }
+
+    return output.value = output.value + number;
   }
 }
