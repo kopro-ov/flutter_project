@@ -27,10 +27,16 @@ class CalculatorPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand('AC');
-                    },
-                    child: Text('AC')),
+                  onPressed: () {
+                    controller.clear();
+                  },
+                  //child: Text('AC')),
+                  child: Obx(
+                    () => Text(
+                      '${controller.clearBtn}',
+                    ),
+                  ),
+                ),
               ),
               Expanded(
                 child: ElevatedButton(

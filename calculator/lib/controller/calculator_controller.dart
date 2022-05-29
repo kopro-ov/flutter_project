@@ -4,11 +4,22 @@ class CalculatorController extends GetxController {
   var output = '0'.obs;
   var result = '0'.obs;
   var operation = ''.obs;
+  var clearBtn = 'AC'.obs;
 
   reset() {
     output.value = '0';
     result.value = '0';
     operation.value = '';
+    clearBtn.value = 'AC';
+  }
+
+  clear() {
+    if (clearBtn.value == 'AC') {
+      reset();
+    } else {
+      output.value = '0';
+      clearBtn.value = 'AC';
+    }
   }
 
   operand(String o) {
@@ -16,9 +27,6 @@ class CalculatorController extends GetxController {
     double y = double.parse(output.value);
 
     switch (o) {
-      case 'AC':
-        reset();
-        break;
       case '+/-':
         output.value = '${-y}'.toString();
         break;
@@ -47,6 +55,7 @@ class CalculatorController extends GetxController {
         output.value = result.value;
         break;
       case '=':
+        clearBtn.value = 'AC';
         if (operation.value != '=') {
           operand(operation.value);
         } else {
@@ -58,6 +67,7 @@ class CalculatorController extends GetxController {
   }
 
   addNumber(String number) {
+    clearBtn.value = 'C';
     if (output.value == result.value) {
       output.value = '0';
     }
