@@ -12,7 +12,7 @@ class CalculatorController extends GetxController {
     result.value = '0';
   }
 
-  operand(String o, int num) {
+  operand(String o) {
     switch (o) {
       case 'AC':
         reset();
