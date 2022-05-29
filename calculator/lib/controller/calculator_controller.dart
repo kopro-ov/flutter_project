@@ -1,46 +1,54 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 
 class CalculatorController extends GetxController {
-  var firstNumber = '0'.obs;
-  var secondNumber = '0'.obs;
+  var num1 = '0'.obs;
+  var num2 = '0'.obs;
   var result = '0'.obs;
 
   reset() {
-    firstNumber.value = '0';
-    secondNumber.value = '0';
+    num1.value = '0';
+    num2.value = '0';
     result.value = '0';
   }
 
   operand(String o) {
+    int x = int.parse(num1.value);
+    int y = int.parse(num2.value);
+
     switch (o) {
       case 'AC':
         reset();
         break;
       case '+/-':
+        num2.value = '${-int.parse(num2.value)}'.toString();
         break;
       case '-':
+        result.value = '${x - y}';
         break;
       case '+':
+        result.value = '${x + y}';
         break;
       case '*':
+        result.value = '${x * y}';
         break;
       case '÷':
+        result.value = '${x / y}';
         break;
       case '=':
+        num2.value = result.value;
         break;
     }
   }
 
   addNumber(String number) {
-    if (secondNumber.value == '0') {
-      return secondNumber.value = number;
+    if (num2.value == '0') {
+      return num2.value = number;
     }
 
-    if (secondNumber.value == '-0') {
-      return secondNumber.value = '-$number';
+    if (num2.value == '-0') {
+      return num2.value = '-$number';
     }
 
-    return secondNumber.value = secondNumber.value + number;
+    return num2.value = num2.value + number;
   }
 }
