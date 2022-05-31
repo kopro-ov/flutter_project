@@ -19,11 +19,11 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: press,
+      style: ElevatedButton.styleFrom(padding: padding),
       child: Text(
         text,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
-      style: ElevatedButton.styleFrom(padding: padding),
     );
   }
 }
