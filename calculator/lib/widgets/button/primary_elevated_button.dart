@@ -23,13 +23,10 @@ class PrimaryElevatedButton extends StatelessWidget {
       onPressed: press,
       style: ElevatedButton.styleFrom(
         // Foreground color
-        onPrimary: onPrimaryColor != ''
-            ? onPrimaryColor
-            : Theme.of(context).colorScheme.onPrimaryContainer,
+        onPrimary:
+            onPrimaryColor ?? Theme.of(context).colorScheme.onPrimaryContainer,
         // Background color
-        primary: primaryColor != ''
-            ? primaryColor
-            : Theme.of(context).colorScheme.primaryContainer,
+        primary: primaryColor ?? Theme.of(context).colorScheme.primaryContainer,
         padding: padding,
       ),
       child: Text(
