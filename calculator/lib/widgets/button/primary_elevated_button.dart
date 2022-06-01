@@ -13,8 +13,8 @@ class PrimaryElevatedButton extends StatelessWidget {
 
   final String text;
   final VoidCallback press;
-  final onPrimaryColor;
-  final primaryColor;
+  final Color? onPrimaryColor;
+  final Color? primaryColor;
   final EdgeInsets padding;
 
   @override
