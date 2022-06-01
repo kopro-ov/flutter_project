@@ -1,4 +1,5 @@
 import 'package:calculator/controller/calculator_controller.dart';
+import 'package:calculator/widgets/button/primary_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,134 +27,148 @@ class CalculatorPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
+                child: PrimaryElevatedButton(
+                  press: () {
                     controller.clear();
                   },
-                  //child: Text('AC')),
-                  child: Obx(
+                  text: Obx(
                     () => Text(
                       '${controller.clearBtn}',
                     ),
-                  ),
+                  ).toString(),
                 ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand('+/-');
-                    },
-                    child: Text('+/-')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('+/-');
+                  },
+                  text: '+/-',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand('%');
-                    },
-                    child: Text('%')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('%');
+                  },
+                  text: '%',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand('÷');
-                    },
-                    child: Text('÷')),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('7');
-                    },
-                    child: Text('7')),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('8');
-                    },
-                    child: Text('8')),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('9');
-                    },
-                    child: Text('9')),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand("*");
-                    },
-                    child: Text('*')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('÷');
+                  },
+                  text: '÷',
+                ),
               ),
             ],
           ),
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('4');
-                    },
-                    child: Text('4')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('7');
+                  },
+                  text: '7',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('5');
-                    },
-                    child: Text('5')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('8');
+                  },
+                  text: '8',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('6');
-                    },
-                    child: Text('6')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('9');
+                  },
+                  text: '9',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand("-");
-                    },
-                    child: Text('-')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('*');
+                  },
+                  text: '*',
+                ),
               ),
             ],
           ),
           Row(
             children: [
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('1');
-                    },
-                    child: Text('1')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('4');
+                  },
+                  text: '4',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('2');
-                    },
-                    child: Text('2')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('5');
+                  },
+                  text: '5',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('3');
-                    },
-                    child: Text('3')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('6');
+                  },
+                  text: '6',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand('+');
-                    },
-                    child: Text('+')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('-');
+                  },
+                  text: '-',
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('1');
+                  },
+                  text: '1',
+                ),
+              ),
+              Expanded(
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('2');
+                  },
+                  text: '2',
+                ),
+              ),
+              Expanded(
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('3');
+                  },
+                  text: '3',
+                ),
+              ),
+              Expanded(
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('+');
+                  },
+                  text: '+',
+                ),
               ),
             ],
           ),
@@ -161,25 +176,28 @@ class CalculatorPage extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.addNumber('0');
-                    },
-                    child: Text('0')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.addNumber('0');
+                  },
+                  text: '0',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand(".");
-                    },
-                    child: Text('.')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.operand('.');
+                  },
+                  text: '.',
+                ),
               ),
               Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      controller.operand("=");
-                    },
-                    child: Text('=')),
+                child: PrimaryElevatedButton(
+                  press: () {
+                    controller.equal();
+                  },
+                  text: '=',
+                ),
               ),
             ],
           )
