@@ -81,4 +81,9 @@ class CalculatorController extends GetxController {
 
     return output.value = output.value + number;
   }
+
+  equal() {
+    clearBtn.value = 'AC';
+    operand(operation.value);
+  }
 }
