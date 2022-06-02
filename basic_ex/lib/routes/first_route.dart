@@ -16,11 +16,7 @@ class FirstRoute extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => const SecondRoute(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/second');
                   },
                   child: const Text('두 번째 화면으로 이동'),
                 ),
