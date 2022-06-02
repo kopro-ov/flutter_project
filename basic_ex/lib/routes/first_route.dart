@@ -1,3 +1,4 @@
+import 'package:basic_ex/routes/second_route.dart';
 import 'package:flutter/material.dart';
 
 class FirstRoute extends StatelessWidget {
@@ -14,7 +15,13 @@ class FirstRoute extends StatelessWidget {
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const SecondRoute(),
+                      ),
+                    );
+                  },
                   child: const Text('두 번째 화면으로 이동'),
                 ),
               ],
