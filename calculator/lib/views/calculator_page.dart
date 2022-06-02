@@ -10,17 +10,17 @@ class CalculatorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final CalculatorController controller = Get.put(CalculatorController());
     return Scaffold(
-      appBar: AppBar(title: Text('CalculatorPage')),
+      appBar: AppBar(title: const Text('CalculatorPage')),
       body: Column(
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Obx(
               () => Text(
                 '${controller.output}',
                 textAlign: TextAlign.right,
-                style: TextStyle(fontSize: 25),
+                style: const TextStyle(fontSize: 25),
               ),
             ),
           ),
