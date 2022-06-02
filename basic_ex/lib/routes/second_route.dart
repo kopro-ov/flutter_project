@@ -14,7 +14,9 @@ class SecondRoute extends StatelessWidget {
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                   child: const Text('첫 번째 화면으로 이동'),
                 ),
               ],
