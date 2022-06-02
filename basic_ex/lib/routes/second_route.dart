@@ -12,16 +12,12 @@ class SecondRoute extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('두 번째 화면 내용'),
-            Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('첫 번째 화면으로 이동'),
-                ),
-              ],
-            )
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('첫 번째 화면으로 이동'),
+            ),
           ],
         ),
       ),
