@@ -1,6 +1,7 @@
 import 'package:get/state_manager.dart';
 
 class CalculatorController extends GetxController {
+  var input = '0'.obs;
   var output = '0'.obs;
   var result = '0'.obs;
   var operation = ''.obs;
@@ -67,6 +68,7 @@ class CalculatorController extends GetxController {
   }
 
   addNumber(String number) {
+    input.value = number;
     clearBtn.value = 'C';
     if (output.value == result.value) {
       output.value = '0';
@@ -78,12 +80,12 @@ class CalculatorController extends GetxController {
     if (output.value == '-0') {
       return output.value = '-$number';
     }
-
     return output.value = output.value + number;
   }
 
   equal() {
     clearBtn.value = 'AC';
+    output.value = input.value;
     operand(operation.value);
   }
 }

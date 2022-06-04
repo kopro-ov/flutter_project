@@ -31,11 +31,7 @@ class CalculatorPage extends StatelessWidget {
                   press: () {
                     controller.clear();
                   },
-                  text: Obx(
-                    () => Text(
-                      '${controller.clearBtn}',
-                    ),
-                  ).toString(),
+                  text: '${controller.clearBtn}',
                 ),
               ),
               Expanded(
