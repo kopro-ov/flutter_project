@@ -27,11 +27,13 @@ class CalculatorPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: PrimaryElevatedButton(
-                  press: () {
-                    controller.clear();
-                  },
-                  text: '${controller.clearBtn}',
+                child: Obx(
+                  () => PrimaryElevatedButton(
+                    press: () {
+                      controller.clear();
+                    },
+                    text: '${controller.clearBtn}',
+                  ),
                 ),
               ),
               Expanded(
