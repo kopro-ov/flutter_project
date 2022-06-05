@@ -19,6 +19,12 @@ class FirstRoute extends StatelessWidget {
               },
               child: const Text('두 번째 화면으로 이동'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/counter');
+              },
+              child: const Text('counter 화면으로 이동'),
+            ),
           ],
         ),
       ),
