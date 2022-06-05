@@ -10,7 +10,7 @@ class CalculatorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final CalculatorController controller = Get.put(CalculatorController());
     return Scaffold(
-      appBar: AppBar(title: const Text('CalculatorPage')),
+      appBar: AppBar(title: const Text('계산기')),
       body: Column(
         children: [
           Container(
