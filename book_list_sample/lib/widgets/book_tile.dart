@@ -18,7 +18,15 @@ class BookTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(title),
-      leading: Image.network(image),
+      leading: SizedBox(
+        width: 40,
+        height: 40,
+        child: Image.network(
+          image,
+          width: 30,
+          height: 30,
+        ),
+      ),
       onTap: () {},
     );
   }
