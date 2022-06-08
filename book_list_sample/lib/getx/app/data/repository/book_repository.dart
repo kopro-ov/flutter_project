@@ -1,6 +1,17 @@
-import 'package:book_list_sample/models/book.dart';
+import 'package:book_list_sample/basic/models/book.dart';
 
 class BookRepository {
+  // final BookApiClient apiClient;
+  // BookRepository({required this.apiClient}) : assert(apiClient != null);
+
+  final Book _dummayBook = Book(
+    title: '패키지 없이 R로 구현하는 심층 강화 학습',
+    subtitle: '1',
+    description: '1',
+    image:
+        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+  );
+
   final List<Book> _dummyBooks = [
     Book(
       title: '패키지 없이 R로 구현하는 심층 강화 학습',
@@ -39,7 +50,12 @@ class BookRepository {
     ),
   ];
 
-  List<Book> getBooks() {
+  get() {
+    return _dummayBook;
+  }
+
+  getAll() {
+    //return apiClient.getAll();
     return _dummyBooks;
   }
 }

@@ -1,8 +1,9 @@
-import 'package:book_list_sample/basic/screens/detail_screen.dart';
-
+import 'package:book_list_sample/getx/app/modules/book/page/book_detail_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../models/book.dart';
+import '../../../data/model/book.dart';
+import '../../../routes/app_pages.dart';
 
 class BookTile extends StatelessWidget {
   final Book book;
@@ -23,16 +24,7 @@ class BookTile extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => DetailScreen(
-              title: book.title,
-              subtitle: book.subtitle,
-              description: book.description,
-              image: book.image,
-            ),
-          ),
-        );
+        Get.toNamed(Routes.BOOK_DETAILS(book.title));
       },
     );
   }
