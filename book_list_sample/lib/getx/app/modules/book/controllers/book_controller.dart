@@ -6,21 +6,18 @@ class BookController extends GetxController {
   final BookRepository repository;
   BookController({required this.repository});
 
-  final _book = Book().obs;
+  final _book = Book(title: '', subtitle: '', image: '', description: '').obs;
   final _books = <Book>[].obs;
 
   get book => _book.value;
   get bookList => _books.value;
 
   get() {
-    repository.get().then((data) {
-      _book.value = data;
-    });
+    _book.value = repository.get();
+    Get.log('book');
   }
 
   getAll() {
-    repository.getAll().then((data) {
-      _books.value = data;
-    });
+    _books.value = repository.getAll();
   }
 }

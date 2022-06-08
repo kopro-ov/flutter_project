@@ -9,6 +9,11 @@ class BookDetailPage extends GetView<BookController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Obx(
+          () => Text(controller.book.title),
+        ),
+      ),
       body: GetX<BookController>(
         initState: (state) {
           Get.find<BookController>().get();
@@ -18,7 +23,7 @@ class BookDetailPage extends GetView<BookController> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(_.book.value),
+              Image.network(_.book.image),
               const SizedBox(
                 height: 3,
               ),

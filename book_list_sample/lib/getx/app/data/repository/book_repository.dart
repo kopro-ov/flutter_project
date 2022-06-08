@@ -1,4 +1,4 @@
-import 'package:book_list_sample/basic/models/book.dart';
+import '../model/book.dart';
 
 class BookRepository {
   // final BookApiClient apiClient;
@@ -51,11 +51,14 @@ class BookRepository {
   ];
 
   get() {
-    return _dummayBook;
+    return Book.fromJson(_dummayBook.toJson());
   }
 
   getAll() {
     //return apiClient.getAll();
-    return _dummyBooks;
+    print(_dummyBooks);
+    List<Book> list =
+        _dummyBooks.map((model) => Book.fromJson(model.toJson())).toList();
+    return list;
   }
 }

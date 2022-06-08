@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'getx/app/routes/app_pages.dart';
+import 'app/routes/app_pages.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class GetxAppScreen extends StatelessWidget {
+  const GetxAppScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print('???');
     return GetMaterialApp(
       title: "앱",
       initialBinding: BindingsBuilder(

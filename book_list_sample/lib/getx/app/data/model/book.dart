@@ -1,31 +1,29 @@
 class Book {
-  late String title;
-  late String subtitle;
-  late String description;
-  late String image;
-
-  static var obs;
+  final String title;
+  final String subtitle;
+  final String description;
+  final String image;
 
   Book({
-    title,
-    subtitle,
-    description,
-    image,
+    required this.title,
+    required this.subtitle,
+    required this.description,
+    required this.image,
   });
 
-  Book.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    subtitle = json['subtitle'];
-    description = json['description'];
-    image = json['image'];
-  }
+  Book.fromJson(Map<String, dynamic> json)
+      : title = json['title'],
+        subtitle = json['subtitle'],
+        description = json['description'],
+        image = json['image'];
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = title;
-    data['subtitle'] = subtitle;
-    data['description'] = description;
-    data['image'] = image;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'subtitle': subtitle,
+        'description': description,
+        'image': image,
+      };
+
+  @override
+  String toString() => 'Book $image';
 }

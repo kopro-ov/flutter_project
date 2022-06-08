@@ -24,7 +24,7 @@ class BookTile extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Get.toNamed(Routes.BOOK_DETAILS(book.title));
+        Get.toNamed(Routes.BOOK_DETAILS('1'));
       },
     );
   }
