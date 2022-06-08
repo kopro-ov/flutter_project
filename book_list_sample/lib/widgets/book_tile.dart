@@ -1,3 +1,4 @@
+import 'package:book_list_sample/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class BookTile extends StatelessWidget {
@@ -27,7 +28,18 @@ class BookTile extends StatelessWidget {
           height: 30,
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              title: title,
+              subtitle: subtitle,
+              description: description,
+              image: image,
+            ),
+          ),
+        );
+      },
     );
   }
 }

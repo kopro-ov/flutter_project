@@ -18,22 +18,22 @@ class ListScreen extends StatelessWidget {
             title: '패키지 없이 R로 구현하는 심층 강화학습',
             image:
                 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-            subtitle: '',
-            description: '',
+            subtitle: '1',
+            description: '1',
           ),
           BookTile(
             title: '패키지 없이 R로 구현하는 심층 강화학습',
             image:
                 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-            subtitle: '',
-            description: '',
+            subtitle: '2',
+            description: '2',
           ),
           BookTile(
             title: '패키지 없이 R로 구현하는 심층 강화학습',
             image:
                 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-            subtitle: '',
-            description: '',
+            subtitle: '3',
+            description: '3',
           ),
           BookTile(
             title: '패키지 없이 R로 구현하는 심층 강화학습',

@@ -3,17 +3,29 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+  final String title;
+  final String subtitle;
+  final String description;
+  final String image;
+  const DetailScreen(
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.description,
+      required this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('패키지 없이 R로 구현하는 심층 강화 학습'),
+        title: Text(title),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network('ht'),
+          Image.network(image),
           const SizedBox(
             height: 3,
           ),
@@ -26,12 +38,12 @@ class DetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
-                      '패키지 없이 R로 구현하는 심층 강화 학습',
+                      title,
                     ),
                     Text(
-                      '손으로 풀어보는.. ',
+                      subtitle,
                       style: TextStyle(fontSize: 18, color: Colors.grey),
                     ),
                   ],
@@ -91,11 +103,11 @@ class DetailScreen extends StatelessWidget {
                   )
                 ],
               ),
-              Container(
-                padding: const EdgeInsets.all(15),
-                child: const Text('머신 러닝과...'),
-              )
             ],
+          ),
+          Container(
+            padding: const EdgeInsets.all(15),
+            child: Text(description),
           )
         ],
       ),
