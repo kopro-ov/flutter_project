@@ -1,9 +1,7 @@
+import 'package:book_list_sample/basic/widgets/book_tile.dart';
 import 'package:book_list_sample/models/book.dart';
 import 'package:book_list_sample/repositories/book_repository.dart';
-import 'package:book_list_sample/widgets/book_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ListScreen extends StatelessWidget {
   ListScreen({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:book_list_sample/screens/list_screen.dart';
+import 'package:book_list_sample/basic/screens/list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ListScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => ListScreen(),
+      },
     );
   }
 }

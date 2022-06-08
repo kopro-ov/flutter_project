@@ -1,5 +1,5 @@
+import 'package:book_list_sample/basic/screens/detail_screen.dart';
 import 'package:book_list_sample/models/book.dart';
-import 'package:book_list_sample/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class BookTile extends StatelessWidget {
