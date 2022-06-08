@@ -1,29 +1,21 @@
+import 'package:book_list_sample/models/book.dart';
 import 'package:book_list_sample/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class BookTile extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String description;
-  final String image;
+  final Book book;
 
-  const BookTile(
-      {Key? key,
-      required this.title,
-      required this.subtitle,
-      required this.description,
-      required this.image})
-      : super(key: key);
+  const BookTile({Key? key, required this.book}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
+      title: Text(book.title),
       leading: SizedBox(
         width: 40,
         height: 40,
         child: Image.network(
-          image,
+          book.image,
           width: 30,
           height: 30,
         ),
@@ -32,10 +24,10 @@ class BookTile extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => DetailScreen(
-              title: title,
-              subtitle: subtitle,
-              description: description,
-              image: image,
+              title: book.title,
+              subtitle: book.subtitle,
+              description: book.description,
+              image: book.image,
             ),
           ),
         );
