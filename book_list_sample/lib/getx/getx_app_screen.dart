@@ -8,7 +8,6 @@ class GetxAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('???');
     return GetMaterialApp(
       title: "앱",
       initialBinding: BindingsBuilder(
