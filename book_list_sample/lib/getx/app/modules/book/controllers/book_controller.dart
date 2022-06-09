@@ -12,6 +12,12 @@ class BookController extends GetxController {
   get book => _book.value;
   get bookList => _books.value;
 
+  @override
+  onInit() {
+    super.onInit();
+    getAll();
+  }
+
   get() {
     _book.value = repository.get();
     Get.log('book');
