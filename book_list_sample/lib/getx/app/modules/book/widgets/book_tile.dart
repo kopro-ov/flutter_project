@@ -1,4 +1,3 @@
-import 'package:book_list_sample/getx/app/modules/book/page/book_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,12 +12,12 @@ class BookTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(book.title),
+      title: Text(book.title!),
       leading: SizedBox(
         width: 40,
         height: 40,
         child: Image.network(
-          book.image,
+          book.image!,
           width: 30,
           height: 30,
         ),

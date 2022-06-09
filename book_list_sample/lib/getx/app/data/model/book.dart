@@ -1,14 +1,14 @@
 class Book {
-  final String title;
-  final String subtitle;
-  final String description;
-  final String image;
+  final String? title;
+  final String? subtitle;
+  final String? description;
+  final String? image;
 
   Book({
-    required this.title,
-    required this.subtitle,
-    required this.description,
-    required this.image,
+    this.title,
+    this.subtitle,
+    this.description,
+    this.image,
   });
 
   Book.fromJson(Map<String, dynamic> json)

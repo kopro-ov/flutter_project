@@ -10,7 +10,7 @@ class BookListPage extends GetView<BookController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('도서 목록 앱'),
+        title: const Text('도서 목록 앱?'),
       ),
       body: Obx(
         () => RefreshIndicator(
