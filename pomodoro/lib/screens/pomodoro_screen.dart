@@ -8,6 +8,39 @@ class PomodoroScreen extends StatefulWidget {
 }
 
 class _PomodoroScreenState extends State<PomodoroScreen> {
+  final List<Widget> _runningButtons = [
+    ElevatedButton(
+      onPressed: () {},
+      child: Text(
+        1 == 2 ? '계속하기' : '일시정지',
+        style: TextStyle(color: Colors.white, fontSize: 16),
+      ),
+      style: ElevatedButton.styleFrom(primary: Colors.blue),
+    ),
+    Padding(
+      padding: EdgeInsets.all(20),
+    ),
+    ElevatedButton(
+      onPressed: () {},
+      child: Text(
+        '포기하기',
+        style: TextStyle(color: Colors.white, fontSize: 16),
+      ),
+      style: ElevatedButton.styleFrom(primary: Colors.grey),
+    ),
+  ];
+  final List<Widget> _stoppedButtons = [
+    ElevatedButton(
+      onPressed: () {},
+      child: Text(
+        '시작하기',
+        style: TextStyle(color: Colors.white, fontSize: 16),
+      ),
+      style: ElevatedButton.styleFrom(
+          primary: 1 == 2 ? Colors.green : Colors.blue),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,9 +70,11 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(onPressed: () {}, child: Text('시작하기'))
-              ],
+              children: 1 == 2 // 휴식 중 ? 버튼 없음 : 버튼 있음
+                  ? const []
+                  : 1 == 2 //정지 ? 정지 중 버튼 : 작업 중 버튼
+                      ? _stoppedButtons
+                      : _runningButtons,
             )
           ],
         ),
