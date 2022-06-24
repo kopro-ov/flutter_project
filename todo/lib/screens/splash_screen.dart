@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,12 +12,11 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  @override
-  void initState() {
-    super.initState();
-    Timer(Duration(seconds: 2), () {
-      //이동 할 페이지 정의
-    });
+  Future<bool> checkLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLogin = prefs.getBool('isLogin') ?? false;
+    print("[*] isLogin : $isLogin");
+    return isLogin;
   }
 
   @override
@@ -40,3 +40,4 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
