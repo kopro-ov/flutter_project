@@ -19,6 +19,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return isLogin;
   }
 
+  void moveScreen() async {
+    await checkLogin().then((isLogin) {
+      if(isLogin) {
+        // 로그인 성공 시 갈 페이지
+      } else {
+        //로그인 페이지
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
