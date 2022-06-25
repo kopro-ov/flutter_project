@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:todo/models/todo.dart';
+import 'package:todo/providers/todo_provider.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({Key? key}) : super(key: key);
@@ -10,13 +13,17 @@ class ListScreen extends StatefulWidget {
 
 class _ListScreenState extends State<ListScreen> {
   List<Todo> todos = [];
+  TodoProvider todoProvider = TodoProvider();
   bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      isLoading = false;
+    Timer(const Duration(seconds: 2), () {
+      todos = todoProvider.getTods();
+      setState(() {
+        isLoading = false;
+      });
     });
   }
 
@@ -59,7 +66,7 @@ class _ListScreenState extends State<ListScreen> {
                           padding: const EdgeInsets.all(5),
                           child: InkWell(
                             child: const Icon(Icons.delete),
-                            onTap: () { },
+                            onTap: () {},
                           ),
                         )
                       ],
