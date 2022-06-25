@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo/screens/list_screen.dart';
+import 'package:todo/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,18 +16,24 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<bool> checkLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLogin = prefs.getBool('isLogin') ?? false;
-    print("[*] isLogin : $isLogin");
-    return isLogin;
+    return prefs.getBool("isLogin") ?? false;
   }
 
   void moveScreen() async {
-    await checkLogin().then((isLogin) {
+    checkLogin().then((isLogin) {
       if(isLogin) {
-        // 로그인 성공 시 갈 페이지
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ListScreen()));
       } else {
-        //로그인 페이지
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginScreen()));
       }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 2), () {
+      moveScreen();
     });
   }
 
@@ -50,4 +58,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
