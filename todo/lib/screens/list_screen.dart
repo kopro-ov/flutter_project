@@ -56,7 +56,26 @@ class _ListScreenState extends State<ListScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(todos[index].title),
-                  onTap: () {},
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SimpleDialog(
+                          title: Text('할 일'),
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              child: Text('제목 : ' + todos[index].title),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              child: Text('내용 : ' + todos[index].description),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                   trailing: SizedBox(
                     width: 80,
                     child: Row(
@@ -65,8 +84,102 @@ class _ListScreenState extends State<ListScreen> {
                         Container(
                           padding: const EdgeInsets.all(5),
                           child: InkWell(
+                            child: const Icon(Icons.edit),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  String title = todos[index].title;
+                                  String description = todos[index].description;
+                                  return AlertDialog(
+                                    title: Text('할 일 수정하기'),
+                                    content: Container(
+                                      height: 200,
+                                      child: Column(
+                                        children: [
+                                          TextField(
+                                            onChanged: (value) {
+                                              title = value;
+                                            },
+                                            decoration: InputDecoration(
+                                              hintText: todos[index].title,
+                                            ),
+                                          ),
+                                          TextField(
+                                            onChanged: (value) {
+                                              description = value;
+                                            },
+                                            decoration: InputDecoration(
+                                              hintText:
+                                                  todos[index].description,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () async {
+                                          Todo newTodo = Todo(
+                                              id: todos[index].id,
+                                              title: title,
+                                              description: description);
+                                          setState(() {
+                                            todoProvider.updateTodo(newTodo);
+                                          });
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('수정'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('취소'),
+                                      )
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          child: InkWell(
                             child: const Icon(Icons.delete),
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    String title = todos[index].title;
+                                    String description =
+                                        todos[index].description;
+                                    return AlertDialog(
+                                      title: Text('할 일 삭제'),
+                                      content: Container(
+                                        child: Text('삭제하시겠습니까?'),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () async {
+                                            setState(() {
+                                              todoProvider.deleteTodo(todos[index].id ?? 0);
+                                            });
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('삭제'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('취소'),
+                                        )
+                                      ],
+                                    );
+                                  });
+                            },
                           ),
                         )
                       ],
@@ -79,7 +192,54 @@ class _ListScreenState extends State<ListScreen> {
               },
               itemCount: todos.length),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                String title = '';
+                String description = '';
+                return AlertDialog(
+                  title: Text('할 일 추가하기'),
+                  content: Container(
+                    height: 200,
+                    child: Column(
+                      children: [
+                        TextField(
+                          onChanged: (value) {
+                            title = value;
+                          },
+                          decoration: InputDecoration(labelText: '제목'),
+                        ),
+                        TextField(
+                          onChanged: (value) {
+                            description = value;
+                          },
+                          decoration: InputDecoration(labelText: '설명'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          todoProvider.addTodo(
+                              Todo(title: title, description: description));
+                        });
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('추가'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('취소'),
+                    )
+                  ],
+                );
+              });
+        },
         child: const Text(
           '+',
           style: TextStyle(fontSize: 25),
