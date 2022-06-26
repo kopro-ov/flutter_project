@@ -86,14 +86,13 @@ class _ListScreenState extends State<ListScreen> {
                           child: InkWell(
                             child: const Icon(Icons.edit),
                             onTap: () {
-                              print(todos[index].title);
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
                                   String title = todos[index].title;
                                   String description = todos[index].description;
                                   return AlertDialog(
-                                    title: Text('할일 수정하기'),
+                                    title: Text('할 일 수정하기'),
                                     content: Container(
                                       height: 200,
                                       child: Column(
@@ -149,7 +148,38 @@ class _ListScreenState extends State<ListScreen> {
                           padding: const EdgeInsets.all(5),
                           child: InkWell(
                             child: const Icon(Icons.delete),
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    String title = todos[index].title;
+                                    String description =
+                                        todos[index].description;
+                                    return AlertDialog(
+                                      title: Text('할 일 삭제'),
+                                      content: Container(
+                                        child: Text('삭제하시겠습니까?'),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () async {
+                                            setState(() {
+                                              todoProvider.deleteTodo(todos[index].id ?? 0);
+                                            });
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('삭제'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('취소'),
+                                        )
+                                      ],
+                                    );
+                                  });
+                            },
                           ),
                         )
                       ],
@@ -169,7 +199,7 @@ class _ListScreenState extends State<ListScreen> {
                 String title = '';
                 String description = '';
                 return AlertDialog(
-                  title: Text('할일 추가하기'),
+                  title: Text('할 일 추가하기'),
                   content: Container(
                     height: 200,
                     child: Column(
